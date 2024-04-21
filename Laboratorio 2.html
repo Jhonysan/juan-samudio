@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calculadora - Taller 1</title>
+    <!-- For styling -->
+    <style>
+        table {
+            border: 1px solid black;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        input[type="button"] {
+            width: 100%;
+            padding: 20px 40px;
+            background-color: green;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+        }
+
+        input[type="text"] {
+            padding: 20px 30px;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+    <h1>1. ¿Qué es Javascript y en qué se asemeja a Java?</h1>
+    </p>
+    <p>Se asemejan en su versatilidad y facil ejecucion en multiples plataformas, ademas de compartir su programacion
+        orientada a objetos.</p>
+    <br>
+    <h1>2.</h1>
+    <div>
+        <input type="text" id="val1" value="4">
+        <input type="text" id="val2" value="10">
+        <button type="button" id="multiply">Multiplicar</button>
+        <button type="button" id="divide">Dividir</button>
+        <button type="button" id="add">Sumar</button>
+        <button type="button" id="subtract">Restar</button>
+    </div>
+    <p id="result">
+        El resultado es: <span id="product">&nbsp;</span>
+    </p>
+    <p>
+        3. La palabra 1 es: <span id="pal1"></span> la palabra 2 es: <span id="pal2"></span> y la concatenacion es:
+        <span id="concat">&nbsp;</span>
+    </p>
+    <br>
+    <p>
+        4. Variable 1 (<span id="samp1"></span>) es de tipo: <span id="typ1"></span> y la segunda variable 2 (<span
+            id="samp2"></span>) es de tipo: <span id="typ2">&nbsp;</span>
+    </p>
+    <br>
+    <p>
+        5.
+    </p>
+    <br>
+    <p>
+        6. Coloque el numero que desea conocer la suma de sus multiplos:
+    </p>
+    <div>
+        <input type="text" id="multiplos" value="10">
+        <button type="button" id="calc">calcular</button>
+    </div>
+    <p>
+        Sus multiplos son: <span id="resmul">&nbsp;</span>
+    </p>
+    <p>
+        Y la suma es de: <span id="restot">&nbsp;</span>
+    </p>
+
+    <script>
+        document.getElementById('add').onclick = function () {
+
+            var x = parseFloat(document.getElementById('val1').value) || 0,
+                y = parseFloat(document.getElementById('val2').value) || 0;
+            document.getElementById('product').innerHTML = x + y;
+        };
+        document.getElementById('multiply').onclick = function () {
+
+            var x = parseFloat(document.getElementById('val1').value) || 0,
+                y = parseFloat(document.getElementById('val2').value) || 0;
+            document.getElementById('product').innerHTML = x * y;
+        };
+
+        document.getElementById('divide').onclick = function () {
+
+            var x = parseFloat(document.getElementById('val1').value) || 0,
+                y = parseFloat(document.getElementById('val2').value) || 0;
+            document.getElementById('product').innerHTML = x / y;
+        };
+        document.getElementById('subtract').onclick = function () {
+
+            var x = parseFloat(document.getElementById('val1').value) || 0,
+                y = parseFloat(document.getElementById('val2').value) || 0;
+            document.getElementById('product').innerHTML = x - y;
+        };
+
+        let pal1 = "hello",
+            pal2 = " World";
+        document.getElementById('pal1').innerHTML = pal1;
+        document.getElementById('pal2').innerHTML = pal2;
+        document.getElementById('concat').innerHTML = pal1 + pal2;
+
+        const samp1 = 23,
+            samp2 = "hola mundo";
+        document.getElementById('typ1').innerHTML = (typeof samp1);
+        document.getElementById('typ2').innerHTML = (typeof samp2);
+        document.getElementById('samp1').innerHTML = samp1;
+        document.getElementById('samp2').innerHTML = samp2;
+
+
+        // Aqui esta la solucion de la 5.
+        const person = {
+            number: 50,
+            apellido: "Doe",
+            activacion: true,
+            basura: null
+        };
+        document.getElementById('calc').onclick = function () {
+            var tot,
+                valor = parseFloat(document.getElementById('multiplos').value) || 0;
+            const reducer = (a, b) => a + b;
+            const multiplos = [];
+            for (let i = 1; i < valor; i++) {
+                const numeros = [3, 5, 7];
+                numeros.map(numero => {
+                    if (i % numero === 0) {
+                        multiplos.push(i);
+                    }
+                })
+            }
+            tot = multiplos.reduce(add, 0);
+            function add(accumulator, a) {
+                return accumulator + a;
+            }
+            document.getElementById('resmul').innerHTML = multiplos;
+            document.getElementById('restot').innerHTML = tot;
+        };
+    </script>
+</body>
+
+</html>
