@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <style>
+        .card {
+            /* Add shadows to create the "card" effect */
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+        }
+
+        /* On mouse-over, add a deeper shadow */
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        /* Add some padding inside the card container */
+        .container {
+            padding: 2px 16px;
+        }
+    </style>
+
+<body>
+    <input type="text" id="fibo" value="5">
+    <button type="button" id="add">Añadir</button>
+
+    <div id="card_container"></div>
+
+</body>
+</head>
+
+</html>
+<script>
+    fibval = 0;
+
+    document.getElementById('add').onclick = function () {
+        fibval = document.getElementById("fibo").value;
+        var fibNumSequence = [];
+        var n1 = -1;
+        var n2 = 1;
+        var nextTerm = 0;
+
+        for (var i = 0; i < fibval; i++) {
+
+            nextTerm = n1 + n2;
+            chart = "<div class='card' id='card_" + i + "'>";
+            chart += "<div class='container'>";
+            chart += "<h4><b>" + nextTerm + "</b></h4>";
+            chart += "<button onclick='deleteCard("+i+")' class='delete_card' id='" + i + "'>borrar</button>"
+            chart += "</div>";
+            chart += "</div>";
+            document.getElementById("card_container").innerHTML += chart;
+            n1 = n2;
+            n2 = nextTerm;
+        }
+    }
+
+    function deleteCard(cardId){
+        document.getElementById("card_"+cardId).remove();
+    }
+
+
+
+
+
+
+
+</script>
